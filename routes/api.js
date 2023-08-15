@@ -2,7 +2,11 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  res.send({ message: "Hello"});
+  if (message === "") {
+    res.status(400);
+    message = "messageの値が空です。";
+  }
+  res.send({ message });
 });
 
 router.use(express.json());
