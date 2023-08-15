@@ -4,7 +4,7 @@ const app = express();
 const port = 3000;
 
 app.use(express.static("public"));
-app.use("/api", api)
+app.use("/api", api);
 
 app.get("/", (req, res, next) => {
   res.end();
