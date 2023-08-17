@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>attacker.example</title>
+  <script>
+    function load() {
+      //ユーザー情報を読み取る
+      const userInfo = frm.document.querySelector("#user_info");
+      //ユーザー情報の文字列をログに出力
+      console.log(userInfo.textContent);
+    }
+  </script>
+</head>
+
+<body>
+  <!-- ユーザー情報をiframeで埋め込む -->
+  <iframe
+    name="frm"
+    onload="load()"
+    src="http://site.example:3000/user.html"
+    width="80%"
+  />
+</body>
+
+</html>
