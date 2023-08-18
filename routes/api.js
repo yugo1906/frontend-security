@@ -2,6 +2,14 @@ const express = require("express");
 const router = express.Router();
 const getCurrentTimestamp = require("../utils/current_timestamp");
 
+router.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  if (req.method === "OPTIONS") {
+    res.header("Access-Control-Allow-Headers", "X-Token");
+  }
+  next();
+});
+
 router.get("/", (req, res) => {
   res.setHeader("X-Timestamp", getCurrentTimestamp());
   let message = req.query.message;
