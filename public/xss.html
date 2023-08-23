@@ -18,6 +18,12 @@
     if (message !== null) {
       document.querySelector("#result").textContent = message;
     }
+
+    const urlStr = url.searchParams.get("url");
+    if (urlStr !== null) {
+      const linkUrl = new URL(urlStr, url.origin);
+      document.querySelector("#link").href = linkUrl;
+    }
   </script>
 </body>
 
