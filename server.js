@@ -1,5 +1,6 @@
 const express = require("express");
 const api = require("./routes/api");
+const crypto = require("crypto");
 const app = express();
 const port = 3000;
 
@@ -12,7 +13,9 @@ app.get("/", (req, res, next) => {
 });
 
 app.get("/csp", (req, res) => {
-  res.render("csp");
+  const nonceValue = crypto.randomBytes(16).toString("base64");
+  res.header("Content-Security-Policy",`script-src 'nonce-${nonceValue}'`);
+  res.render("csp", { nonce: nonceValue });
 });
 
 // サーバーを起動する
